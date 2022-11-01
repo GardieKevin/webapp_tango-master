@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<title>Tango Lesson Web Application</title>
+
+<style>
+body {
+	padding-top: 50px;
+}
+
+.special {
+	padding-top: 50px;
+}
+</style>
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href=".">Système de gestion des
+					cours de tango</a>
+			</div>
+		</div>
+	</nav>
+
+
+	<div class="container special">
+
+		<h2 class="h2">Ajout d'un nouveau danseur</h2>
+		<div>
+			<form method="post"
+				th:action="@{/saveDancer}" th:object="${dancer}">
+				<div class="form-group">
+					<label for="lastnameInput">Nom</label> 
+					<input
+						type="text" th:field="*{lastname}" class="form-control" id="lastnameInput"
+						aria-describedby="lastnameHelp" placeholder="Saisir le nom du danseur"> <small
+						id="lastnameHelp" class="form-text text-muted">Merci d'écrire le nom du danseur.</small>
+				</div>
+				<div class="form-group">
+					<label for="firstnameInput">Prénom</label> 
+					<input
+						type="text" th:field="*{firstname}" class="form-control" id=""firstnameInput""
+						aria-describedby="firstnameHelp" placeholder="Saisir le prénom"> <small
+						id="firstnameHelp" class="form-text text-muted">Merci d'écrire le prénom du danseur.</small>
+				</div>
+				<div class="form-group">
+					<label for="danceLevelInput">Niveau du danseur</label> 
+					<input
+						type="text" th:field="*{danceLevel}" class="form-control" id="danceLevelInput"
+						aria-describedby="danceLevelHelp" placeholder="Saisir le niveau du danseur"> <small
+						id="danceLevelHelp" class="form-text text-muted">Merci de choisir le niveau du danseur</small>
+				</div>
+				<div class="form-group">
+					<label for="telephoneInput">Téléphone</label> 
+					<input
+						type="text" th:field="*{telephone}" class="form-control" id="telephoneInput"
+						aria-describedby="telephoneHelp" placeholder="Saisir le numéro de téléphone"> <small
+						id="telephoneHelp" class="form-text text-muted">Merci de saisir le numéro de téléphone du danseur</small>
+				</div>
+				<div class="form-group">
+					<label for="emailInput">Adresse email</label> 
+					<input
+						type="text" th:field="*{email}" class="form-control" id="emailInput"
+						aria-describedby="emailHelp" placeholder="Saisir l'adresse email"> <small
+						id="emailHelp" class="form-text text-muted">Merci de saisir l'adresse email du danseur</small>
+				</div>				
+				
+				<button type="submit" class="btn btn-primary">Créer</button>
+			</form>
+		</div>
+
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+</body>
+</html>

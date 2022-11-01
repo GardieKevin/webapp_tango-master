@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/webapp_tango-master/webapp_tango.iml" filepath="$PROJECT_DIR$/webapp_tango-master/webapp_tango.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/webapp_tango-master.iml" filepath="$PROJECT_DIR$/.idea/webapp_tango-master.iml" />
+    </modules>
+  </component>
+</project>
