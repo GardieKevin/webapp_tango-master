@@ -31,7 +31,9 @@ public class LessonService {
     	 Lesson savedLesson;
 
         // Règle de gestion : Le nom de la leçon doit être mis en majuscule.
-    	 lesson.setLessonName(lesson.getLessonName().toUpperCase());
+    	 if(lesson.getLessonName() != null){
+             lesson.setLessonName(lesson.getLessonName().toUpperCase());
+         }
 
         if(lesson.getId() == null) {
             // Si l'id est nul, alors c'est une nouvelle leçon.
@@ -42,5 +44,6 @@ public class LessonService {
         
         return savedLesson;
     }
+
 
 }

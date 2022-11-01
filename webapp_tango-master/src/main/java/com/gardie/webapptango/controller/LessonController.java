@@ -1,5 +1,7 @@
 package com.gardie.webapptango.controller;
 
+import com.gardie.webapptango.model.Dancer;
+import com.gardie.webapptango.service.DancerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,8 @@ public class LessonController {
 
 	@Autowired
 	private LessonService service;
+	@Autowired
+	private DancerService dancerService;
 	
 	@GetMapping("/lessonsSection")
 	public String home(Model model) {
@@ -46,6 +50,8 @@ public class LessonController {
 	public String getLesson(@PathVariable("id") final int id, Model model) {
 		Lesson l = service.getLesson(id);
 		model.addAttribute("lesson", l);
+		Iterable<Dancer> listDancer = dancerService.getDancers();
+		model.addAttribute("dancers", listDancer);
 		return "aLesson";
 	}
 	
