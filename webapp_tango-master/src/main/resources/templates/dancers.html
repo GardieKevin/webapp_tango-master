@@ -63,7 +63,8 @@
 						<td><span th:text="${dancer.email}"> Adresse email </span></td>
 						<td>
 							<a th:href="@{/updateDancer/{id}(id=${dancer.id})}"><button class="btn btn-info">Modifier</button></a>
-							<a th:href="@{/deleteDancer/{id}(id=${dancer.id})}"><button class="btn btn-danger">Supprimer</button></a>						
+							<a th:href="@{/deleteDancer/{id}(id=${dancer.id})}"><button class="btn btn-danger">Supprimer</button></a>
+							<a th:href="@{/registrationsDancer/{id}(id=${dancer.id})}"><button class="btn btn-success">Voir</button></a>
 						</td>
 					</tr>
 				</tbody>

@@ -39,40 +39,27 @@
 
 
 <div class="container special">
-    <h2 class="h2"><span th:text="${lesson.lessonName}"> Nom </span></h2>
+    <h2 class="h2">Liste des cours disponibles pour <span th:text="${dancer.firstname}"></span> <span th:text="${dancer.lastname}"></span></h2>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
             <tr>
-                <th>Date</th>
-                <th>Heure</th>
-                <th>Niveau</th>
-                <th>Prix</th>
-                <th>Description</th>
+                <th>Nom du cours</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td><span th:text="${lesson.lessonDate}"> Date </span></td>
-                <td><span th:text="${lesson.lessonTime}"> Heure </span></td>
-                <td><span th:text="${lesson.danceLevel}"> Niveau </span></td>
-                <td><span th:text="${lesson.price}"> Prix </span></td>
-                <td><span th:text="${lesson.description}"> Détails </span></td>
+            <tr th:if="${lessons.empty}">
+                <td colspan="3">Aucun cours en base de données</td>
+            </tr>
+            <tr th:each="lesson: ${lessons}">
+                <td><span th:text="${lesson.lessonName}"> Nom </span></td>
+                <td>
+                    <a th:href="@{/registerDancer/{lesson_id}/{dancer_id}(lesson_id=${lesson.id}, dancer_id=${dancer.id})}"><button class="btn btn-success">Inscrire</button></a>
+                </td>
             </tr>
             </tbody>
         </table>
-    </div>
-
-    <h4>Participants :</h4>
-
-    <div>
-        <tr th:if="${lesson.attendees.empty}">
-            <td colspan="3">Aucun danseur inscris à ce cours</td>
-        </tr>
-        <tr th:each="attendee: ${lesson.attendees}">
-            <td><span th:text="${attendee.firstname}"></span></td>
-            <td><span th:text="${attendee.lastname}"></span><br></td>
-        </tr>
     </div>
 
 </div>

@@ -30,7 +30,9 @@ public class DancerService {
     	 Dancer savedDancer;
 
         // Règle de gestion : Le nom du danseur doit être mis en majuscule.
-    	 dancer.setLastname(dancer.getLastname().toUpperCase());
+    	if(dancer.getLastname() != null){
+            dancer.setLastname(dancer.getLastname().toUpperCase());
+        }
 
         if(dancer.getId() == null) {
             // Si l'id est nul, alors c'est un nouveau danseur.

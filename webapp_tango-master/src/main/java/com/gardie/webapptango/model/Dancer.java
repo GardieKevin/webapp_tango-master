@@ -1,10 +1,14 @@
 package com.gardie.webapptango.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class)
 public class Dancer {
 
 	private Integer id;
