@@ -26,6 +26,12 @@ body {
 .special {
 	padding-top: 50px;
 }
+.form_title{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
 </style>
 </head>
 <body>
@@ -36,13 +42,18 @@ body {
 				<a class="navbar-brand" href=".">Système de gestion des
 					cours de tango</a>
 			</div>
+
 		</div>
 	</nav>
 
 
 	<div class="container special">
 
-		<h2 class="h2">Ajout d'un nouveau danseur</h2>
+		<div class="form_title">
+				<h2 class="h2">Ajout d'un nouveau danseur</h2>
+				<a href="http://localhost:9001/dancersSection" class="btn btn-info">Annuler</a>
+		</div>
+
 		<div>
 			<form method="post"
 				th:action="@{/saveDancer}" th:object="${dancer}">
@@ -83,6 +94,7 @@ body {
 				</div>				
 				
 				<button type="submit" class="btn btn-primary">Créer</button>
+
 			</form>
 		</div>
 

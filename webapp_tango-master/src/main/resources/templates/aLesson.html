@@ -25,6 +25,11 @@
         .special {
             padding-top:50px;
         }
+        .lien{
+            display: flex;
+            justify-content: end;
+        }
+
     </style>
 </head>
 <body>
@@ -32,7 +37,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href=".">Système de gestion des cours de tango</a>
+            <a class="navbar-brand" href="http://localhost:9001">Système de gestion des cours de tango</a>
         </div>
     </div>
 </nav>
@@ -65,7 +70,7 @@
 
     <h4>Participants :</h4>
 
-    <div>
+    <div class="table table-striped table-sm">
         <tr th:if="${lesson.attendees.empty}">
             <td colspan="3">Aucun danseur inscris à ce cours</td>
         </tr>
@@ -74,6 +79,11 @@
             <td><span th:text="${attendee.lastname}"></span><br></td>
         </tr>
     </div>
+
+    <div>
+        <h4><a class="lien" href="http://localhost:9001/lessonsSection">Retour</a></h4>
+    </div>
+
 
 </div>
 
