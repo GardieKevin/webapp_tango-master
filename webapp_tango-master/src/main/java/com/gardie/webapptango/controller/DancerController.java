@@ -16,8 +16,10 @@ import com.gardie.webapptango.model.Dancer;
 import com.gardie.webapptango.service.DancerService;
 import lombok.Data;
 
+import java.io.FilterOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Data
 @Controller
@@ -50,11 +52,32 @@ public class DancerController {
 	}
 
 	@GetMapping("/registrationsDancer/{id}")
-	public String registrateDancer(@PathVariable("id") final int id, Model model) {
+	public String registrationsDancer(@PathVariable("id") final int id, Model model) {
+
 		Dancer d = dancerService.getDancer(id);
+		Iterable<Lesson> allLessons = lessonService.getLessons();
+		List<Lesson> dancerLessonList = d.getFollowedLessons();
+		List<Lesson> updatedLessonList = new ArrayList<>();
+
+		if(dancerLessonList.isEmpty()){
+			model.addAttribute("lessons", allLessons);
+		} else {
+			int count = 0;
+			for(Lesson lesson : allLessons){
+				for(Lesson followedLesson : dancerLessonList){
+					if(followedLesson.getLessonName().equals(lesson.getLessonName())){
+						count ++;
+					}
+				}
+				if(count == 0){
+					updatedLessonList.add(lesson);
+				}
+				count = 0;
+			}
+			model.addAttribute("lessons", updatedLessonList );
+		}
 		model.addAttribute("dancer", d);
-		Iterable<Lesson> listLesson = lessonService.getLessons();
-		model.addAttribute("lessons", listLesson);
+
 		return "registrationsDancer";
 	}
 

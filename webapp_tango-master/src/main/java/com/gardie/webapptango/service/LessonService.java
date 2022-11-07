@@ -30,11 +30,6 @@ public class LessonService {
      public Lesson saveLesson(Lesson lesson) {
     	 Lesson savedLesson;
 
-        // Règle de gestion : Le nom de la leçon doit être mis en majuscule.
-    	 if(lesson.getLessonName() != null){
-             lesson.setLessonName(lesson.getLessonName().toUpperCase());
-         }
-
         if(lesson.getId() == null) {
             // Si l'id est nul, alors c'est une nouvelle leçon.
         	savedLesson = lessonProxy.createLesson(lesson);

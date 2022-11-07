@@ -50,19 +50,22 @@
             </thead>
             <tbody>
             <tr th:if="${lessons.empty}">
-                <td colspan="3">Aucun cours en base de données</td>
+                <td colspan="3">Aucun cours disponibles !</td>
             </tr>
             <tr th:each="lesson: ${lessons}">
                 <td><span th:text="${lesson.lessonName}"> Nom </span></td>
                 <td>
-                    <a th:href="@{/registerDancer/{lesson_id}/{dancer_id}(lesson_id=${lesson.id}, dancer_id=${dancer.id})}"><button class="btn btn-success">Inscrire</button></a>
+                    <a th:href="@{/registerDancer/{lesson_id}/{dancer_id}(lesson_id=${lesson.id}, dancer_id=${dancer.id})}" id="register_button"><button class="btn btn-success">Inscrire</button></a>
+                    <a><button class="btn btn-warning" id="unsubscribe_button">Désinscrire</button></a>
                 </td>
+
             </tr>
             </tbody>
         </table>
     </div>
 
 </div>
+
 
 <script
         src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

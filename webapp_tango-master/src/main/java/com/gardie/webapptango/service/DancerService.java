@@ -29,11 +29,6 @@ public class DancerService {
      public Dancer saveDancer(Dancer dancer) {
     	 Dancer savedDancer;
 
-        // Règle de gestion : Le nom du danseur doit être mis en majuscule.
-    	if(dancer.getLastname() != null){
-            dancer.setLastname(dancer.getLastname().toUpperCase());
-        }
-
         if(dancer.getId() == null) {
             // Si l'id est nul, alors c'est un nouveau danseur.
         	savedDancer = dancerProxy.createDancer(dancer);
