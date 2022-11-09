@@ -1,5 +1,6 @@
 package com.gardie.webapptango.controller;
 
+import com.gardie.webapptango.model.Dancer;
 import com.gardie.webapptango.service.DancerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,9 @@ import com.gardie.webapptango.model.Lesson;
 import com.gardie.webapptango.service.LessonService;
 
 import lombok.Data;
+
+import java.util.Iterator;
+import java.util.List;
 
 @Data
 @Controller

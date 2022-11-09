@@ -51,6 +51,29 @@ public class DancerController {
 		return "formUpdateDancer";		
 	}
 
+	@GetMapping("/unsubscribeDancer/{dancer_id}/{lesson_id}")
+	public ModelAndView unsubscribeDancer(@PathVariable("dancer_id") final int dancer_id, @PathVariable("lesson_id") final int lesson_id){
+
+		Dancer d = dancerService.getDancer(dancer_id);
+		List<Lesson> dancerLessonList = d.getFollowedLessons();
+		int index = 0;
+
+		for(Lesson followedLesson : dancerLessonList){
+			if (followedLesson.getId().equals(lesson_id)){
+				System.out.println("BON");
+				index = dancerLessonList.indexOf(followedLesson);
+			} else {
+				System.out.println("FAUX");
+			}
+		}
+		System.out.println(index);
+		dancerLessonList.remove(index);
+		System.out.println("SUPPRIME");
+		dancerService.saveDancer(d);
+
+		return new ModelAndView("redirect:/lessonsSection");
+	}
+
 	@GetMapping("/registrationsDancer/{id}")
 	public String registrationsDancer(@PathVariable("id") final int id, Model model) {
 
