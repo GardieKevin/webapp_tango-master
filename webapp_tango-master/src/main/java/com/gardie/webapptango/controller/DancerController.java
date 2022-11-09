@@ -1,8 +1,10 @@
 package com.gardie.webapptango.controller;
 
+import com.gardie.webapptango.model.Dancer;
 import com.gardie.webapptango.model.Lesson;
+import com.gardie.webapptango.service.DancerService;
 import com.gardie.webapptango.service.LessonService;
-import org.apache.tomcat.util.json.JSONParser;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,14 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.gardie.webapptango.model.Dancer;
-import com.gardie.webapptango.service.DancerService;
-import lombok.Data;
-
-import java.io.FilterOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Data
 @Controller
@@ -32,22 +28,28 @@ public class DancerController {
 	
 	@GetMapping("/dancersSection")
 	public String home(Model model) {
+
 		Iterable<Dancer> listDancer = dancerService.getDancers();
 		model.addAttribute("dancers", listDancer);
+
 		return "dancers";
 	}
 	
 	@GetMapping("/createDancer")
 	public String createDancer(Model model) {
+
 		Dancer d = new Dancer();
 		model.addAttribute("dancer", d);
+
 		return "formNewDancer";
 	}
 	
 	@GetMapping("/updateDancer/{id}")
 	public String updateDancer(@PathVariable("id") final int id, Model model) {
+
 		Dancer d = dancerService.getDancer(id);
-		model.addAttribute("dancer", d);	
+		model.addAttribute("dancer", d);
+
 		return "formUpdateDancer";		
 	}
 
@@ -60,15 +62,10 @@ public class DancerController {
 
 		for(Lesson followedLesson : dancerLessonList){
 			if (followedLesson.getId().equals(lesson_id)){
-				System.out.println("BON");
 				index = dancerLessonList.indexOf(followedLesson);
-			} else {
-				System.out.println("FAUX");
 			}
 		}
-		System.out.println(index);
 		dancerLessonList.remove(index);
-		System.out.println("SUPPRIME");
 		dancerService.saveDancer(d);
 
 		return new ModelAndView("redirect:/getLesson/{lesson_id}");
@@ -119,13 +116,17 @@ public class DancerController {
 	
 	@GetMapping("/deleteDancer/{id}")
 	public ModelAndView deleteDancer(@PathVariable("id") final int id) {
+
 		dancerService.deleteDancer(id);
+
 		return new ModelAndView("redirect:/dancersSection");
 	}
 	
 	@PostMapping("/saveDancer")
 	public ModelAndView saveDancer(@ModelAttribute Dancer dancer) {
+
 		dancerService.saveDancer(dancer);
+
 		return new ModelAndView("redirect:/dancersSection");
 	}
 	

@@ -22,6 +22,8 @@ public class Dancer {
 
 	private String email;
 
+	private String gender;
+
 	private List<Lesson> followedLessons;
 	
 }
