@@ -71,7 +71,7 @@ public class DancerController {
 		System.out.println("SUPPRIME");
 		dancerService.saveDancer(d);
 
-		return new ModelAndView("redirect:/lessonsSection");
+		return new ModelAndView("redirect:/getLesson/{lesson_id}");
 	}
 
 	@GetMapping("/registrationsDancer/{id}")
@@ -114,7 +114,7 @@ public class DancerController {
 		dancerService.saveDancer(d);
 		lessonService.saveLesson(l);
 
-		return new ModelAndView("redirect:/dancersSection");
+		return new ModelAndView("redirect:/registrationsDancer/{dancer_id}");
 	}
 	
 	@GetMapping("/deleteDancer/{id}")
