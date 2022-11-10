@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+          crossorigin="anonymous">
+
+    <title>Tango Lessons Web Application</title>
+
+    <style>
+        body {
+            padding-top: 50px;
+        }
+        .special {
+            padding-top:50px;
+        }
+        .h2{
+            padding-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="http://localhost:9001/">Système de gestion des cours de tango</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container special">
+    <h2 class="h2">Profil de <span th:text="${dancer.firstname} + ' ' + ${dancer.lastname}"></span></h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <tr>
+                <th>Nom</th>
+                <td><span th:text="${dancer.lastname}"> Nom </span></td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td><span th:text="${dancer.firstname}"> Prénom </span></td>
+            </tr>
+            <tr>
+                <th>Niveau</th>
+                <td><span th:text="${dancer.danceLevel}"> Niveau </span></td>
+            </tr>
+            <tr>
+                <th>Téléphone</th>
+                <td><span th:text="${dancer.telephone}"> N° de téléphone </span></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><span th:text="${dancer.email}"> Adresse email </span></td>
+            </tr>
+            <tr>
+                <th>Genre</th>
+                <td><span th:text="${dancer.gender}"> Genre </span></td>
+            </tr>
+        </table>
+
+        <h4>Actions</h4>
+        <div>
+            <a th:href="@{/updateDancer/{id}(id=${dancer.id})}"><button class="btn btn-info">Modifier</button></a>
+            <a th:href="@{/deleteDancer/{id}(id=${dancer.id})}"><button class="btn btn-danger">Supprimer</button></a>
+        </div>
+    </div>
+</div>
+
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -121,6 +121,15 @@ public class DancerController {
 
 		return new ModelAndView("redirect:/dancersSection");
 	}
+
+	@GetMapping("/getDancerProfile/{id}")
+	public String getDancerProfile(@PathVariable("id") final int id, Model model) {
+
+		Dancer dancer = dancerService.getDancer(id);
+		model.addAttribute("dancer", dancer);
+
+		return "dancerProfile";
+	}
 	
 	@PostMapping("/saveDancer")
 	public ModelAndView saveDancer(@ModelAttribute Dancer dancer) {

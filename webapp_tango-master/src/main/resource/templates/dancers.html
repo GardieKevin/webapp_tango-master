@@ -25,6 +25,12 @@
 	.special {
 		padding-top:50px;
 	}
+	.table{
+		width: 600px;
+	}
+	.h2{
+		padding-bottom: 30px;
+	}
 </style>
 </head>
 <body>
@@ -45,10 +51,6 @@
 					<tr>
 						<th>Nom</th>
 						<th>Prénom</th>
-						<th>Niveau</th>
-						<th>Téléphone</th>
-						<th>Email</th>
-						<th>Genre</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
@@ -59,14 +61,9 @@
 					<tr th:each="dancer: ${dancers}">
 						<td><span th:text="${dancer.lastname}"> Nom </span></td>
 						<td><span th:text="${dancer.firstname}"> Prénom </span></td>
-						<td><span th:text="${dancer.danceLevel}"> Niveau </span></td>
-						<td><span th:text="${dancer.telephone}"> N° de téléphone </span></td>
-						<td><span th:text="${dancer.email}"> Adresse email </span></td>
-						<td><span th:text="${dancer.gender}"> Genre </span></td>
 						<td>
-							<a th:href="@{/updateDancer/{id}(id=${dancer.id})}"><button class="btn btn-info">Modifier</button></a>
-							<a th:href="@{/deleteDancer/{id}(id=${dancer.id})}"><button class="btn btn-danger">Supprimer</button></a>
-							<a th:href="@{/registrationsDancer/{id}(id=${dancer.id})}"><button class="btn btn-success">Voir</button></a>
+							<a th:href="@{/registrationsDancer/{id}(id=${dancer.id})}"><button class="btn btn-success">Cours</button></a>
+							<a th:href="@{/getDancerProfile/{id}(id=${dancer.id})}"><button class="btn btn-light">Profil</button></a>
 						</td>
 					</tr>
 				</tbody>
