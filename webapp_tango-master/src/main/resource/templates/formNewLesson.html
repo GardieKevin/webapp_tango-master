@@ -61,42 +61,42 @@ body {
 					<label for="lessonNameInput">Nom</label> 
 					<input
 						type="text" th:field="*{lessonName}" class="form-control" id="lessonNameInput"
-						aria-describedby="lessonNameHelp" placeholder="Saisir le nom du cours"> <small
+						aria-describedby="lessonNameHelp" placeholder="Saisir le nom du cours" required> <small
 						id="lessonNameHelp" class="form-text text-muted">Merci d'écrire le nom du cours.</small>
 				</div>
 				<div class="form-group">
 					<label for="descriptionInput">Description</label> 
 					<input
-						type="text" th:field="*{description}" class="form-control" id=""descriptionInput""
-						aria-describedby="descriptionHelp" placeholder="Saisir la description"> <small
+						type="text" th:field="*{description}" class="form-control" id="descriptionInput"
+						aria-describedby="descriptionHelp" placeholder="Saisir la description" required> <small
 						id="descriptionHelp" class="form-text text-muted">Merci d'écrire la description du cours.</small>
 				</div>
 				<div class="form-group">
 					<label for="lessonDateInput">Date</label> 
 					<input
 						type="date" th:field="*{lessonDate}" class="form-control" id="lessonDateInput"
-						aria-describedby="lessonDateHelp" placeholder="Saisir la date"> <small
+						aria-describedby="lessonDateHelp" placeholder="Saisir la date" required> <small
 						id="lessonDateHelp" class="form-text text-muted">Merci de choisir la date du cours</small>
 				</div>
 				<div class="form-group">
 					<label for="lessonTimeInput">Heure</label> 
 					<input
 						type="time" th:field="*{lessonTime}" class="form-control" id="lessonTimeInput"
-						aria-describedby="lessonTimeHelp" placeholder="Saisir l'heure"> <small
+						aria-describedby="lessonTimeHelp" placeholder="Saisir l'heure" required> <small
 						id="lessonTimeHelp" class="form-text text-muted">Merci de choisir l'heure du cours</small>
 				</div>				
 				<div class="form-group">
 					<label for="danceLevelInput">Niveau du cours</label> 
 					<input
 						type="text" th:field="*{danceLevel}" class="form-control" id="danceLevelInput"
-						aria-describedby="danceLevelHelp" placeholder="Saisir le niveau du cours"> <small
+						aria-describedby="danceLevelHelp" placeholder="Saisir le niveau du cours" required> <small
 						id="danceLevelHelp" class="form-text text-muted">Merci de choisir le niveau du cours</small>
 				</div>
 				<div class="form-group">
 					<label for="priceInput">Prix</label> 
 					<input
 						type="number" th:field="*{price}" class="form-control" id="priceInput"
-						aria-describedby="priceHelp" placeholder="Saisir le prix du cours"> <small
+						aria-describedby="priceHelp" placeholder="Saisir le prix du cours" required> <small
 						id="priceHelp" class="form-text text-muted">Merci de choisir le prix du cours</small>
 				</div>
 				

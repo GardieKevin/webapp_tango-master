@@ -32,6 +32,29 @@
         .unsubscribe_link{
             color: darkred;
         }
+        .attendees_title{
+            padding-top: 25px;
+        }
+        .attendees_div{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .attendee_item{
+            display: flex;
+            justify-content: space-between;
+        }
+        .attendee_block{
+            width: 220px;
+        }
+        .attendee_gender{
+            color: dimgrey;
+            font-style: italic;
+            padding-bottom: 15px;
+        }
+        .attendee_name{
+            text-decoration: none;
+            color: inherit;
+        }
 
     </style>
 </head>
@@ -44,7 +67,6 @@
         </div>
     </div>
 </nav>
-
 
 <div class="container special">
     <h2 class="h2"><span th:text="${lesson.lessonName}"> Nom </span></h2>
@@ -71,24 +93,54 @@
         </table>
     </div>
 
-    <h4>Participants :</h4>
+    <h4 class="attendees_title">Participants :</h4>
 
     <div class="table table-striped table-sm">
-        <tr th:if="${lesson.attendees.empty}">
+        <tr th:if="${males.empty && females.empty}">
             <td colspan="3">Aucun danseur inscris à ce cours</td>
         </tr>
-        <tr th:each="attendee: ${lesson.attendees}">
-            <td><span th:text="${attendee.firstname}"></span></td>
-            <td><span th:text="${attendee.lastname}"></span></td>
-            <td><a class="unsubscribe_link" th:href="@{/unsubscribeDancer/{attendee_id}/{lesson_id}(attendee_id=${attendee.id}, lesson_id=${lesson.id})}">Désinscrire</a><br></td>
-        </tr>
+        <div class="attendees_div">
+            <div class="attendee_block">
+                <tr th:if="${!lesson.attendees.empty}">
+                    <td><h4 class="attendee_gender">Hommes (<span th:text="${maleCount}"></span>)</h4></td>
+                </tr>
+                <tr th:if="${males.empty && !females.empty}">
+                    <td colspan="3">Aucun homme inscris à ce cours</td>
+                </tr>
+                <tr th:each="attendee: ${males}">
+                    <div  class="attendee_item">
+                        <div>
+                            <td><a class="attendee_name" th:href="@{/registrationsDancer/{id}(id=${attendee.id})}" th:text="${attendee.lastname} + ' ' + ${attendee.firstname}"></a></td>
+                        </div>
+                        <div>
+                            <td><a class="unsubscribe_link" th:href="@{/unsubscribeDancer/{attendee_id}/{lesson_id}(attendee_id=${attendee.id}, lesson_id=${lesson.id})}">Désinscrire</a><br></td>
+                        </div>
+                    </div>
+                </tr>
+            </div>
+            <div class="attendee_block">
+                <tr  th:if="${!lesson.attendees.empty}">
+                    <td><h4 class="attendee_gender">Femmes (<span th:text="${femaleCount}"></span>)</h4></td>
+                </tr>
+                <tr th:if="${females.empty && !males.empty}">
+                    <td colspan="3">Aucune femme inscrite à ce cours</td>
+                </tr>
+                <tr th:each="attendee: ${females}">
+                    <div  class="attendee_item">
+                        <div>
+                            <td><a class="attendee_name" th:href="@{/registrationsDancer/{id}(id=${attendee.id})}" th:text="${attendee.lastname} + ' ' + ${attendee.firstname}"></a></td>
+                        </div>
+                        <div>
+                            <td><a class="unsubscribe_link" th:href="@{/unsubscribeDancer/{attendee_id}/{lesson_id}(attendee_id=${attendee.id}, lesson_id=${lesson.id})}">Désinscrire</a><br></td>
+                        </div>
+                    </div>
+                </tr>
+            </div>
+        </div>
     </div>
-
     <div>
         <h4><a class="lien" href="http://localhost:9001/lessonsSection">Retour</a></h4>
     </div>
-
-
 </div>
 
 <script

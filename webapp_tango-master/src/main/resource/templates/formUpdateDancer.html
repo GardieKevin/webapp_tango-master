@@ -63,7 +63,7 @@ body {
 				</div>
 				<div class="form-group">
 					<label for="genderInput">Genre</label>
-					<input type="radio" id="male" name="gender" value="Homme"><label for="male"> Homme</label>
+					<input type="radio" id="male" name="gender" value="Homme" required><label for="male"> Homme</label>
 					<input type="radio" id="female" name="gender" value="Femme"><label for="female"> Femme</label>
 					<small id="genderHelp" class="form-text text-muted">Merci de choisir le genre du danseur.</small>
 				</div>
@@ -71,35 +71,38 @@ body {
 					<label for="lastnameInput">Nom</label>
 					<input
 						type="text" th:field="*{lastname}" class="form-control" id="lastnameInput"
-						aria-describedby="lastnameHelp" placeholder="Saisir le nom"> <small
+						aria-describedby="lastnameHelp" placeholder="Saisir le nom" required> <small
 						id="lastnameHelp" class="form-text text-muted">Merci d'écrire le nom du danseur.</small>
 				</div>
 				<div class="form-group">
 					<label for="firstnameInput">Prénom</label>
 					<input
 						type="text" th:field="*{firstname}" class="form-control" id="firstnameInput"
-						aria-describedby="firstnameHelp" placeholder="Saisir le prénom"> <small
+						aria-describedby="firstnameHelp" placeholder="Saisir le prénom" required> <small
 						id="firstnameHelp" class="form-text text-muted">Merci d'écrire le prénom du danseur.</small>
 				</div>
 				<div class="form-group">
 					<label for="danceLevelInput">Date</label>
-					<input
-						type="text" th:field="*{danceLevel}" class="form-control" id="danceLevelInput"
-						aria-describedby="danceLevelHelp" placeholder="Saisir le niveau"> <small
-						id="danceLevelHelp" class="form-text text-muted">Merci de saisir le niveau du danseur</small>
+					<select aria-describedby="danceLevelHelp" class="form-control" th:field="*{danceLevel}" name="danceLevel" id="danceLevelInput" required>
+						<option value="">-- Choisir le niveau --</option>
+						<option value="Débutant">Débutant</option>
+						<option value="Intermédiaire">Intermédiaire</option>
+						<option value="Avancé">Avancé</option>
+					</select><small
+						id="danceLevelHelp" class="form-text text-muted">Merci de choisir le niveau du danseur</small>
 				</div>
 				<div class="form-group">
 					<label for="telephoneInput">Heure</label>
 					<input
 						type="text" th:field="*{telephone}" class="form-control" id="telephoneInput"
-						aria-describedby="telephoneHelp" placeholder="Saisir le téléphone"> <small
+						aria-describedby="telephoneHelp" placeholder="Saisir le téléphone" required> <small
 						id="telephoneHelp" class="form-text text-muted">Merci de saisir le téléphone du danseur</small>
 				</div>	
 				<div class="form-group">
 					<label for="emailInput">Niveau</label>
 					<input
 						type="text" th:field="*{email}" class="form-control" id="emailInput"
-						aria-describedby="emailHelp" placeholder="Saisir le mail du danseur"> <small
+						aria-describedby="emailHelp" placeholder="Saisir le mail du danseur" required> <small
 						id="emailHelp" class="form-text text-muted">Merci de saisir l'adresse email du danseur.</small>
 				</div>
 
